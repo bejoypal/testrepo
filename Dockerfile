@@ -7,7 +7,8 @@ RUN apt-get install apache2 -y
 RUN service apache2 start
 RUN apt-get install git -y
 RUN git clone https://github.com/bejoypal/capstone-proj-food.git
-RUN cp -r * /var/www/html 
+RUN ls -ltr
+#RUN cp -r * /var/www/html 
 #COPY ./target/hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar
 #CMD ["java" ,"-jar","hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar"]
 #RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
