@@ -9,14 +9,27 @@ pipeline {
     // restart jenkins server ->  sudo service jenkins restart
     stages {
          
-        stage('Copy to apache ') {
+        stage('Docker Build') {
             steps {
-                echo '----------------- This is a copy to apache ----------'
+                echo '----------------- This is a build docker image phase ----------'
                 sh '''
-                    ls -ltr
-                    whoami
-                    sudo cp -r * /var/www/html
+                    docker image build -t hotelproj-frontend-2 .
                 '''
+            }
+        }
+
+        stage('Docker Deploy') {
+            steps {
+                echo '----------------- This is a docker deploment phase ----------'
+                sh '''
+                 (if  [ $(docker ps -a | grep hotelproj-frontend-2 | cut -d " " -f1) ]; then \
+                        echo $(docker rm -f hotelproj-frontend-2); \
+                        echo "---------------- successfully removed ecom-webservice ----------------"
+                     else \
+                    echo OK; \
+                 fi;);
+            docker container run --restart always --name hotelproj-frontend-2 --network=host hotelproj-frontend-2
+            '''
             }
         }
  
