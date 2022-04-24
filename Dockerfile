@@ -8,7 +8,6 @@ RUN service apache2 start
 RUN apt-get install git -y
 RUN git clone https://github.com/bejoypal/capstone-proj-food.git
 RUN ls -ltr
-RUN netstat -ano | grep 80
 RUN cp -r capstone-proj-food/* /var/www/html 
 #COPY ./target/hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar
 #CMD ["java" ,"-jar","hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar"]
