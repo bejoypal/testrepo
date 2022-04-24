@@ -28,7 +28,7 @@ pipeline {
                      else \
                     echo OK; \
                  fi;);
-            docker container run --restart always --name hotelproj-frontend-2 --network=host hotelproj-frontend-2
+            docker container run --restart always --name hotelproj-frontend-2 -p 80:80 hotelproj-frontend-2
             '''
             }
         }
