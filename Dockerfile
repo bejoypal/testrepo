@@ -8,10 +8,10 @@ RUN service apache2 start
 RUN apt-get install git -y
 RUN git clone https://github.com/bejoypal/capstone-proj-food.git
 RUN ls -ltr
-RUN service apache2 status
 RUN cp -r capstone-proj-food/* /var/www/html 
 RUN service apache2 start
 RUN service apache2 start
+RUN service apache2 status
 #COPY ./target/hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar
 #CMD ["java" ,"-jar","hotelproj-springboot-backend-2-0.0.1-SNAPSHOT.jar"]
 #RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
