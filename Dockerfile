@@ -2,6 +2,7 @@
 FROM openjdk:11-jdk
 RUN apt-get update -y
 RUN apt-get upgrade -y
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get install apache2 -y
 RUN service apache2 start
@@ -9,7 +10,7 @@ RUN apt-get install git -y
 RUN git clone https://github.com/bejoypal/capstone-proj-food.git
 RUN ls -ltr
 RUN cp -r capstone-proj-food/* /var/www/html 
-RUN cat /etc/apache2/apache2.conf
+#RUN cat /etc/apache2/apache2.conf
 RUN echo "ServerName localhost">> /etc/apache2/apache2.conf
 RUN service apache2 start
 RUN service apache2 start
